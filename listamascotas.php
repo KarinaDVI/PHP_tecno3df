@@ -7,10 +7,10 @@ require('./conexion.php');
 $mascotas="activos";
 
     if (isset($_POST['Inactivo'])) {
-        $result= seleccion('0', $conn);
+        $result= seleccion('inactivo', $conn);
         $mascotas="inactivos";
     } else {
-        $result= seleccion('1', $conn);
+        $result= seleccion('activo', $conn);
         $mascotas="activos";
     }
 
@@ -31,7 +31,7 @@ function seleccion(string $e, $conn) {
     if (!$result) {
         die("Error en la consulta: " . $conn->error);
     }
-    $estado = isset($estado) ? '1' : '0';
+    $estado = isset($estado) ? 'activo' : 'inactivo';
     /*Devolver el resulado de la consulta y el tipo de */
     return $result;
 }

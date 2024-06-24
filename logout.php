@@ -5,6 +5,7 @@ session_start();
          unset($_SESSION['IDUsuario']);
    		unset($_SESSION['Usuario']);
    		unset($_SESSION['Nombre']);
+        unset($_SESSION['Perfil']);
    		unset($_SESSION['is_logged']);
 		
            session_destroy();

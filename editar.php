@@ -4,7 +4,7 @@ require('./conexion.php');
 if ((isset($_POST['Modificar']))) {
 
     extract($_POST);
-    $estado = isset($estado) ? '1' : '0';
+    $estado = isset($estado) ? 'activo' : 'inactivo';
    $sql="UPDATE users3 SET  nombre='$nombre', 
                             direccion='$direccion', 
                             email='$email', 
@@ -58,11 +58,14 @@ include "header.php";
         <div class="d-flex align-items-center gap-2">
             <div class="form-check form-switch">
                 <label class="form-check-label" for="flexCheckChecked">Estado inactivo/activo
-                <input class="form-check-input" type="checkbox" role="switch"  name="estado" value="" <?= $row['estado'] == '1' ? 'checked' : '' ?>><br/>
+                <input class="form-check-input" type="checkbox" role="switch"  name="estado" value="" <?= $row['estado'] == 'activo' ? 'checked' : '' ?>><br/>
             </div>
+            <!-- VER LO DE ARRIBA -->
+        <?php if ($_SESSION['Perfil'] == "administrador"||$_SESSION['Perfil'] == 'maestro'): ?>
             <div class="d-flex m-2 d-sm-block gap-2">
                 <a href="eliminar.php?id_m=<?= $row['id'] ?>&def=<?= $row['id'] ?>" class="btn btn-outline-danger">Eliminado definitivo</a>
             </div>
+        <?php endif; ?>
         </div>                 
         <div class='d-flex justify-content-center align-items-center m-2  gap-2'>
             <input type="submit" class="btn btn-outline-info" name="Modificar" value="Actualizar">

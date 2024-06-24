@@ -10,7 +10,7 @@ try {
     if($def==$id_m){
         $sql = "DELETE FROM users3m WHERE id_m=$id_m";
     }else{
-        $sql="UPDATE users3m SET estado='0' WHERE id_m=$id_m";
+        $sql="UPDATE users3m SET estado='inactivo' WHERE id_m=$id_m";
     }
     if ($conn->query($sql) === TRUE) {
         header("Location:listamascotas.php");

@@ -51,6 +51,7 @@ if ($_SESSION['is_logged'] == 0) {
                 <li><a class="dropdown-item" href="insertar.php">Altas</a></li>
               </ul>
             </li>
+            <?php if ($_SESSION['Perfil'] == "administrador" || $_SESSION['Perfil'] == 'maestro'): ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Administradores
@@ -60,17 +61,12 @@ if ($_SESSION['is_logged'] == 0) {
                 <li><a class="dropdown-item" href="admins.php">Altas</a></li>
               </ul>
             </li>
+            <?php endif;?>
             <a class="nav-link" href="listamascotas.php">Ver mascotas</a>
             <div class="d-flex align-items-center">
             <a href="logout.php" class="nav-item d-flex justify-content-end text-decoration-none"><span class="material-symbols-outlined text-primary">login</span>
-              <span class="nav-item d-flex text-primary nav justify-content-end text-decoration-none"><?=$_SESSION['Nombre']?></span></a>
-             <!--  <form method="post">
-              <a id="theme-toggle" class="btn-outline-image align-self-stretch align-middle mx-2" type="submit"  name="color" value="#ff0077">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="text-primary">
-                  <path d="M448 256c0-106-86-192-192-192V448c106 0 192-86 192-192zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"></path>
-                </svg>
-              </a>
-              </form> -->
+              <span class="nav-item d-flex text-primary nav justify-content-end text-decoration-none"><?=$_SESSION['Nombre']." (".$_SESSION['Perfil'].")"?></span></a>
+            
             </div>
              
             </div>

@@ -14,7 +14,7 @@ $sql = "SELECT users3m.id_m, users3m.nombremascota,
                users3.telefono as telefono
         FROM users3m
         INNER JOIN users3 ON users3m.id_duenio=users3.id
-        WHERE users3m.id_duenio = $id AND users3m.estado = '1'
+        WHERE users3m.id_duenio = $id AND users3m.estado = 'activo'
         ";
 
 $result=mysqli_query($conn, $sql);

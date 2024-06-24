@@ -3,18 +3,18 @@ require('./conexion.php');
 include 'header.php';
 
 // Crear la tabla si no existe
-$sql = "CREATE TABLE IF NOT EXISTS users3 (
+/* $sql = "CREATE TABLE IF NOT EXISTS users3 (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     direccion VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     telefono VARCHAR(50) NOT NULL
 )";
-
-if ($conn->query($sql) === false) {
+ */
+/* if ($conn->query($sql) === false) {
     echo "Error al crear la tabla: " . $conn->error;
 }
-
+ */
 if  ( ( isset($_POST['Alta'])) ) {
     extract($_POST);
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

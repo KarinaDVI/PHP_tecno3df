@@ -8,7 +8,7 @@ try {
     if($def==$ida){
         $sql = "DELETE FROM admins1m WHERE ida=$ida";
     }else{
-        $sql="UPDATE admins1m SET estado='0' WHERE ida=$ida";
+        $sql="UPDATE admins1m SET estado='inactivo' WHERE ida=$ida";
     }
     if ($conn->query($sql) === TRUE) {
         header("Location:listadoadmins.php");

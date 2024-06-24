@@ -1,17 +1,19 @@
 <?php
 require('./conexion.php');
 // Crear la tabla si no existe
-$sql = "CREATE TABLE IF NOT EXISTS admins1m (
+/* $sql = "CREATE TABLE IF NOT EXISTS admins1m (
     ida INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     nombreadmin VARCHAR(50) NOT NULL,
-    contrasenia VARCHAR(50) NOT NULL
-)"; 
+    contrasenia VARCHAR(50) NOT NULL,
+    estado INT(1) UNSIGNED NOT NULL,
+    perfil INT(1) UNSIGNED NOT NULL
+)";  */
 
-if ($conn->query($sql) === false) {
+/* if ($conn->query($sql) === false) {
     echo "Error al crear la tabla: " . $conn->error;
 }
-
+ */
 $msge="";
 //comprobar password
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,22 +29,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                     WHERE nombreadmin='$nombreAdmin'");
         
         if (mysqli_num_rows($verifica_existencia) > 0) {
-          $msge = "<h5 style='color: #CA2E2E;'>Usuario existente, intente con otro.<h5>";
+          $msge = "<p style='color: #CA2E2E;'>Usuario existente, intente con otro.<p>";
           } 
           else {
-            $sql = "INSERT INTO admins1m (nombre, nombreadmin, contrasenia) 
-                    VALUES ('$nombre','$nombreAdmin','$contrasenia')";
+            $sql = "INSERT INTO admins1m (nombre, nombreadmin, contrasenia, perfil) 
+                    VALUES ('$nombre','$nombreAdmin','$contrasenia', 'usuario')";
         
             if ($conn->query($sql) === TRUE) {
-              $msge = "<h5 style='color: #2ECA6A;'>Registro exitoso.<h5>";
+              $msge = "<p style='color: #2ECA6A;'>Registro exitoso.<p>";
               echo "<meta http-equiv='refresh' content='2;url=login.php'>";
               } 
               else {
-                  $msge = "<h5 style='color: #CA2E2E;'>Error al insertar el registro: " . $conn->error . "<h5>";
+                  $msge = "<p style='color: #CA2E2E;'>Error al insertar el registro: " . $conn->error . "<p>";
                   }
                 }
       } else {
-        $msge = "<h5 style='color: #CA2E2E;'>Las contraseñas deben coincidir.<h5>";
+        $msge = "<p style='color: #CA2E2E;'>Las contraseñas deben coincidir.<p>";
       }
   /* Busqueda de usuario */
     /* $sql = "SELECT ida, nombre, nombreUsuario, contrasenia,FROM admins1m WHERE nombreUsuario='$user' AND contrasenia='$pass'"; */
@@ -65,7 +67,7 @@ $conn->close();
     <h2 class="pt-2 pl-2 col-s-4 pt-2 text-sm-center">Registro</h2>
       <div class="col-lg-4 d-none d-lg-flex col align-items-center justify-content-center">
      
-      <div class="row g-0">
+      <div class="row g-0 ms-4">
         <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
           class="w-100 h-auto rounded ml-5" />
         </div>

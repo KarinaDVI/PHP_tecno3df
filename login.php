@@ -19,6 +19,7 @@ if (isset($_POST['Login'])) {
             $_SESSION['Usuario'] = $row['nombreadmin'];
             $_SESSION['IDUsuario'] = $row['ida'];
             $_SESSION['Nombre'] = $row['nombre'];
+            $_SESSION['Perfil'] = $row['perfil'];
             $_SESSION['is_logged'] = 1;
 
         header('location: home.php');
@@ -41,7 +42,7 @@ if (isset($_POST['Login'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
-<body class="bg-dark-subtle">
+<body class="bg-dark">
 <div class="container d-flex align-items-center justify-content-center vh-100 w-50">
   
   <div class="card mb-3">
@@ -49,7 +50,7 @@ if (isset($_POST['Login'])) {
     <h2 class="pt-2 pl-2 col-s-4 pt-2 text-sm-center">Login</h2>
       <div class="col-lg-4 d-none d-lg-flex col align-items-center justify-content-center">
      
-      <div class="row g-0">
+      <div class="row g-0 ms-4">
         <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
           class="w-100 h-auto rounded ml-5" />
         </div>
@@ -75,19 +76,14 @@ if (isset($_POST['Login'])) {
             <div class="col d-flex justify-content-center">
               <a href="register.php">No se registró? Registrate!</a>
             </div>
-              <div class="col d-flex justify-content-center">
-                <!-- Checkbox -->
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                  <label class="form-check-label" for="form2Example31"> Recordarme </label>
-                  <?=$msge?>
-                </div>
-              </div>
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4" name="Login">Login</button>
-            <a href="index.php" ><input class="btn btn-outline-success mb-4" type="button" value="Volver"></input></a>
+            <div class="col d-flex justify-content-center gap-2">
+              <button type="submit" class="btn btn-primary btn-block mb-4" name="Login">Login</button>
+              <a href="index.php" ><input class="btn btn-outline-success mb-4" type="button" value="Volver"></input></a>
+            </div>
+            
           </form>
 
         </div>

@@ -20,7 +20,7 @@ try {
     if($def==$id){
         $sql = "DELETE FROM users3 WHERE id=$id";
     }else{
-        $sql="UPDATE users3 SET estado='0' WHERE id=$id";
+        $sql="UPDATE users3 SET estado='inactivo' WHERE id=$id";
     }
     
     if ($conn->query($sql) === TRUE) {

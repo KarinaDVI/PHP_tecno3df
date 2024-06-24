@@ -29,7 +29,7 @@ $fecha_hora_actual = date("d/m/Y  H:i ");
 // Procesar la actualización del registro si se envió el formulario
 if (isset($_POST['ModificarMascota'])) {
     extract($_POST);
-    $estado = isset($estado) ? '1' : '0';
+    $estado = isset($estado) ? 'activo' : 'inactico';
     // Preparar la consulta SQL de actualización
     $sql_update = "UPDATE users3m SET nombremascota='$nombremascota', especie='$especie', sexo='$sexo', peso='$peso', observaciones='$observaciones', imgurl='$imgurl', edad='$edad', fecha_nacimiento='$fecha_nacimiento', historia_clinica='$historia_clinica',estado='$estado' WHERE id_m=$id_m";
 
@@ -73,7 +73,7 @@ $conn->close();
             <input class="row form-control" type="text" name="imgurl" value="<?= $row['imgurl'] ?>">
             <div class="form-check form-switch">
                 <label class="form-check-label" for="flexCheckChecked">Estado inactivo/activo
-                <input class="form-check-input" type="checkbox" role="switch"  name="estado" value="" <?= $row['estado'] == '1' ? 'checked' : '' ?>><br/>
+                <input class="form-check-input" type="checkbox" role="switch"  name="estado" value="" <?= $row['estado'] == 'activo' ? 'checked' : '' ?>><br/>
             </div>
     </div>
     <div class="col-md mx-2">
@@ -95,9 +95,11 @@ $conn->close();
         <div class="d-flex mb-5 py-4  gap-2 justify-content-center align-items-top">
                 <input type="submit" class="btn btn-outline-info" name="ModificarMascota" value="Actualizar">
                 <input type="button" class="btn btn-outline-success mx-6" onclick="window.location.href='mostrarmascota.php?id=<?= $row['id_duenio'] ?>'" value="Volver">
+                <?php if ($_SESSION['Perfil'] == "administrador"||$_SESSION['Perfil'] == 'maestro'): ?>
                 <div class="d-flex w-50 d-sm-block gap-2">
                     <a href="eliminarmascota.php?id_m=<?= $row['id_m'] ?>&def=<?= $row['id_m'] ?>" class="btn btn-outline-danger">Eliminado <span><br></span> definitivo</a>
-                </div> 
+                </div>
+                <?php endif; ?>
         </div>
     </form>
 </div>
