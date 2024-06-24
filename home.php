@@ -15,7 +15,7 @@ if (!isset($_SESSION['is_logged']) || $_SESSION['is_logged'] == 0) {
 <main>
 <h2 class="m-4 bg bg-light">Administración de Clinica</h2>
     <div class="container-fluid w-100 vh-100 flex-fill bg-light">
-    <a class="m-4" href="home.php"><button class="btn btn-outline-primary">Ir al Home</button></a>
+    <a class="m-4" href="index.php"><button class="btn btn-outline-primary">Ir al Home</button></a>
     <?php if ($_SESSION['Perfil'] == "usuario" || $_SESSION['Perfil'] == "maestro"): ?>
         <p class="m-5">Esto es una mensaje de prueba para "usuario"; El sistema registra por defecto como usuario.
           El usuario solo puede acceder a modulos de gestión de clientes y mascotas
